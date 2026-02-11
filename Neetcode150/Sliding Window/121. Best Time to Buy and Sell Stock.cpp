@@ -18,7 +18,7 @@ class solution{
         return profit; 
     }
 
-    //sliding window - O(n)
+    //sliding window - while loop - O(n)
     int maxProfit(vector<int> &prices){
         int n = prices.size(); 
 
@@ -33,6 +33,22 @@ class solution{
             }else{
                 i = j; 
                 j = j+1; 
+            }
+        }
+        return profit; 
+    }
+
+    //sliding window - for loop - O(n)
+    int maxProfit(vector<int> &prices){
+        int minPrice = INT_MAX; 
+        int profit = 0; 
+
+        int n = prices.size(); 
+        for(int i = 0; i < n; i++){
+            minPrice = min(minPrice, prices[i]); 
+            int diff = prices[i]-minPrice;
+            if(diff > minPrice){
+                profit = max(profit, diff); 
             }
         }
         return profit; 
