@@ -18,6 +18,8 @@ class Solution{
             count = 1; 
         }
 
+        maxNode = max(maxNode, root->val); 
+
         count += countGoodNodes(root->left, maxNode); 
         count += countGoodNodes(root->right, maxNode); 
 
