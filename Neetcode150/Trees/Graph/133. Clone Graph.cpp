@@ -1,4 +1,6 @@
+//dfs
 class Solution {
+
 public:
 
     Node* dfsClone(Node* node, map<Node*, Node*> &oldToNew){
@@ -23,5 +25,33 @@ public:
     Node* cloneGraph(Node* node) {
         map<Node*, Node*> oldToNew; 
         return dfsClone(node, oldToNew); 
+    }
+};
+
+//bfs
+class Solution {
+public:
+    Node* cloneGraph(Node* node) {
+        if(node == NULL) return NULL; 
+        unordered_map<Node*, Node*>oldToNew; 
+
+        queue<Node*> q; 
+        oldToNew[node] = new Node(node->val); 
+
+        q.push(node); 
+
+        while(!q.empty()){
+            Node* curr = q.front(); 
+            q.pop(); 
+
+            for(Node* no:curr->neighbors){
+                if(oldToNew.find(no) == oldToNew.end()){
+                    oldToNew[no] = new Node(no->val); 
+                    q.push(no); 
+                }
+                oldToNew[curr]->neighbors.push_back(oldToNew[no]); 
+            }
+        }
+        return oldToNew[node]; 
     }
 };
