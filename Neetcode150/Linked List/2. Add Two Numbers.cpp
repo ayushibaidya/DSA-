@@ -12,10 +12,10 @@ public:
             int num1 = (list1?list1->val:0); 
             int num2 = (list2?list2->val:0);
 
-            int sum = num1+num2+carry; 
+            int sum = num1+num2+carry; //carry gets added in the next loop 
 
-            carry = sum/10; 
-            sum = sum%10; 
+            carry = sum/10; //gets if there is any carry = 1 -> gets added in the next loop 
+            sum = sum%10; //gets the number in the ones place 
 
             curr->next = new ListNode(sum); 
             curr = curr->next; 
