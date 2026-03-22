@@ -10,8 +10,9 @@ public:
         TreeNode* left = invertTree(root->left); 
         TreeNode* right = invertTree(root->right); 
 
-        root->left = right;
-        root->right = left; 
+        TreeNode* temp = left; 
+        root->left = right; 
+        root->right = temp; 
 
         return root; 
     }
@@ -28,14 +29,17 @@ public:
         q.push(root); 
 
         while(!q.empty()){
-            TreeNode* node = q.front(); 
-            q.pop(); 
-            swap(node->left, node->right); 
-            if(node->left){
-                q.push(node->left); 
-            }
-            if(node->right){
-                q.push(node->right); 
+            int size = q.size(); 
+            for(int i = 0; i < size; i++){
+                TreeNode* curr = q.front(); 
+                q.pop(); 
+
+                TreeNode* temp = curr->left; 
+                curr->left = curr->right; 
+                curr->right = temp; 
+
+                if(curr->left) q.push(curr->left); 
+                if(curr->right) q.push(curr->right); 
             }
         }
         return root; 
