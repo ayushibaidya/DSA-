@@ -1,4 +1,4 @@
-//TC: O(n*2^n)
+//TC: O(n!)
 //SC: O(n)
 class Solution {
 public:

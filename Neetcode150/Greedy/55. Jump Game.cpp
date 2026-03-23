@@ -1,3 +1,5 @@
+//GREEDY 
+//TC: O(n) SC: O(n)
 class Solution {
 public:
     bool canJump(vector<int>& nums) {
